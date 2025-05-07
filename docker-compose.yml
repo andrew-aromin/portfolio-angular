@@ -1,0 +1,14 @@
+services:
+  backend:
+    container_name: welcome-angular-backend
+    build: ./backend
+    ports:
+      - "5009:5009"
+
+  frontend:
+    container_name: welcome-angular-frontend
+    build: ./frontend
+    ports:
+      - "5010:80"
+    depends_on:
+      - backend

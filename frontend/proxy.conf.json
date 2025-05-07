@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "http://welcome-angular-backend:5006",
+      "secure": false
+    }
+  }

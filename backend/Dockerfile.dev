@@ -1,0 +1,16 @@
+# Stage 1: Build the app
+FROM maven:3.9.9-eclipse-temurin-21-alpine AS build
+
+WORKDIR /app
+
+COPY . .
+
+RUN mvn dependency:resolve-plugins
+
+# Activate 'dev' profile and expose port 5006
+EXPOSE 5006
+
+CMD ["mvn", "spring-boot:run", "-Dspring-boot.run.profiles=dev", \
+     "-Dspring.devtools.restart.enabled=true", \
+     "-Dspring.devtools.livereload.enabled=true", \
+     "-Dspring.devtools.remote.secret=mysecret"]

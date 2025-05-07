@@ -1,0 +1,25 @@
+services:
+  backend:
+    container_name: welcome-angular-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5006:5006"
+    volumes:
+      - ./backend:/app
+    environment:
+      - MAVEN_OPTS=-Xmx512m
+
+  frontend:
+    container_name: welcome-angular-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
