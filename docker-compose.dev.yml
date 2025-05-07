@@ -1,5 +1,5 @@
 services:
-  backend:
+  welcome-angular-backend:
     container_name: welcome-angular-backend
     build:
       context: ./backend
@@ -10,8 +10,10 @@ services:
       - ./backend:/app
     environment:
       - MAVEN_OPTS=-Xmx512m
+    networks:
+      - lan
 
-  frontend:
+  welcome-angular-frontend:
     container_name: welcome-angular-frontend
     build:
       context: ./frontend
@@ -22,4 +24,6 @@ services:
       - ./frontend:/app
       - /app/node_modules
     depends_on:
-      - backend
+      - welcome-angular-backend
+    networks:
+      - lan

@@ -1,14 +1,18 @@
 services:
-  backend:
+  welcome-angular-backend:
     container_name: welcome-angular-backend
     build: ./backend
     ports:
       - "5009:5009"
+    networks:
+      - lan
 
-  frontend:
+  welcome-angular-frontend:
     container_name: welcome-angular-frontend
     build: ./frontend
     ports:
-      - "5010:80"
+      - "5010:5010"
     depends_on:
-      - backend
+      - welcome-angular-backend
+    networks:
+      - lan

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { cleanAndValidate, blobToBase64 } from './helpers';
 import { CommonModule } from '@angular/common';
-import { environment } from './../environments/environment';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -24,9 +23,7 @@ export class PageComponent implements OnInit {
   constructor(
     private route: Router,
     private http: HttpClient
-  ) {
-    this.API_URL = environment['apiUrl'] ?? '';
-  }
+  ) {}
 
   async ngOnInit() {
     const fullPath = this.route.url;
@@ -48,7 +45,7 @@ export class PageComponent implements OnInit {
 
     try {
       const blob = await firstValueFrom(
-        this.http.get(`${this.API_URL}/api/getLogo`, {
+        this.http.get(`/api/getLogo`, {
           params: { q: cleanedName },
           responseType: 'blob'
         })

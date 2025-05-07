@@ -5,7 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:4200, http://localhost:5010")
+@CrossOrigin(origins = {  
+"http://localhost:4200",
+"http://welcome-angular-frontend:4200", 
+"http://welcome-angular-frontend:5010",
+"http://welcome-angular.aaromincloud.lan",
+"http://welcome-angular.aaromincloud.us"})
 @RestController
 @RequestMapping("/api/")
 public class LogoController {

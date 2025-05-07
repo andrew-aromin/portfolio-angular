@@ -17,6 +17,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=builder /app/dist/frontend/browser/ /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 5010
 
 CMD ["nginx", "-g", "daemon off;"]
